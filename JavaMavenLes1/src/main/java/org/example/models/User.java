@@ -14,11 +14,15 @@ public class User {
     private String name;
     private int age;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Auto> autos;
+
     public User(){}
 
     public User(String name, int age) {
         this.name = name;
         this.age = age;
+        autos = new ArrayList<>();
     }
 
     public int getId() {
@@ -54,7 +58,13 @@ public class User {
                 '}';
     }
 
-
+    void addAuto(Auto auto){
+        auto.setUser(this);
+        autos.add(auto);
+    }
+    void removeAuto(Auto auto){
+        autos.remove(auto);
+    }
 
 
 }
