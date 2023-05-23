@@ -1,8 +1,6 @@
 package org.example.models;
 
 import javax.persistence.*;
-
-
 @Entity
 @Table(name="autos")
 public class Auto {
@@ -10,24 +8,21 @@ public class Auto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name= "model")
-    private  String model;
+    @Column (name = "model")
+    private String model;
 
     private String color;
 
-    @ManyToOne(fetch =  FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private  User user;
+    private User user;
 
-
-    public Auto() {
-    }
+    public Auto(){}
 
     public Auto(String model, String color) {
         this.model = model;
         this.color = color;
     }
-
 
     public int getId() {
         return id;
@@ -52,7 +47,6 @@ public class Auto {
     public User getUser() {
         return user;
     }
-
     public void setUser(User user) {
         this.user = user;
     }
@@ -60,12 +54,8 @@ public class Auto {
     @Override
     public String toString() {
         return "Auto{" +
-                "id=" + id +
-                ", model='" + model + '\'' +
+                "model='" + model + '\'' +
                 ", color='" + color + '\'' +
-                ", user=" + user +
                 '}';
     }
-
-
 }

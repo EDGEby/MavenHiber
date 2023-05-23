@@ -58,7 +58,7 @@ public class User {
                 '}';
     }
 
-    void addAuto(Auto auto){
+    public void addAuto(Auto auto){
         auto.setUser(this);
         autos.add(auto);
     }
